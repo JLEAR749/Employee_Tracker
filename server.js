@@ -2,7 +2,8 @@ const db = require ('./db')
 const { prompt } = require ('inquirer')
 const mysql = require('mysql2')
 const cTable= require('console.table')
-
+const department = require('./routes/Department')
+const {getDept, newDept, deptArrFill, roleArrFill, updateRole, getEmployees} = require
 function Questions(){
   prompt(
     [

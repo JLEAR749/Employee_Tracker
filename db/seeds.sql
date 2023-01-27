@@ -13,7 +13,7 @@ VALUES  ("Sales Manager", 60000,1),
         ("Software Engineer", 90000,2),
         ("Customer Service Rep", 40000,3),
         ("Marketing Manager",45000, 4),
-        ("Marking Intern",35000, 4);
+        ("Marketing Intern",35000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES  ("Bret", "Johnson", 1, null),
