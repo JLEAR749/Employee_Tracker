@@ -1,23 +1,33 @@
-const db = require ('./db/connection')
-const inquirer = require ('inquirer')
+const db = require ('./db')
+const { prompt } = require ('inquirer')
+const mysql = require('mysql2')
+const cTable= require('console.table')
 
-db.query(`DELETE FROM course_names WHERE id = ?`, 3, (err, result) => {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
+function Questions(){
+  prompt(
+    [
+      {
+        type: 'list',
+        name: 'title',
+        message: 'What would you like to do?',
+        choices: ['View all departments', 'View all employees','add a department', 'add a role', 'add an employee', 'view roles','update an employee role','End']
+      }
+    ]
+  )
+.then((answer) => {
 
-// Query database
-db.query('SELECT * FROM course_names', function (err, results) {
-  console.log(results);
-});
+}
+ console.log("RESPONSE: ", answers)
+// viewAllEmployees()
+})
+}
+Questions()
 
-// Default response for any other request (Not Found)
-app.use((req, res) => {
-  res.status(404).end();
-});
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+function viewAllEmployees(){
+  db.findAllEmployee()
+.then( function(answers){
+  console.log("ANSWERS: ", answers)
+}) 
+}
+
