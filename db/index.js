@@ -1,15 +1,13 @@
-const connection = require('./connection')
+const connection = require('./connection');
+const inquirer = require('inquirer');
+const db = require('../db/connection');
+const { default: Choice } = require('inquirer/lib/objects/choice');
+
+
 
 class DB {
-    constructor (connection) {
+    constructor(connection) {
         this.connection = connection;
-    }
-    
-
-    findAllEmployee(){
-        return this.connection.promise().query("SELECT * FROM employee")
-    }
-
-}
+    }};
 
 module.exports = new DB(connection);
