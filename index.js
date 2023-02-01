@@ -97,7 +97,7 @@ const showDepartments = () => {
 const showRoles = () => {
   console.log('All roles');
 
-  const sql = 'SELECT role.id, role.title, department.name AS department FROM role INNER JOIN department ON role.department_id = department.id';
+  const sql = 'SELECT roles.id, roles.title, department.name AS department FROM roles INNER JOIN department ON roles.department_id = department.id';
 
   connection.query(sql, (err, rows) => {
     if (err) throw err;
@@ -108,8 +108,7 @@ const showRoles = () => {
 
 const showEmployees = () => {
   console.log('All Employees');
-  const sql = 'SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT (manager.first_name,manager.last_name)AS manager from employee LEFT JOIN role ON employee.role_id=role.id LEFT JOIN department ON role.department.id = department.id LEFT JOIN employee manager ON employee.manager_id = manager.id';
-
+  const sql = 'SELECT employee.id, employee.first_name, employee.last_name, roles.title, department.name AS department, roles.salary, CONCAT(manager.first_name, manager.last_name)AS manager from employee LEFT JOIN roles ON employee.role_id = roles.id LEFT JOIN department ON roles.department_id = department.id LEFT JOIN employee manager ON employee.manager_id = manager.id;'
   connection.query(sql, (err, rows) => {
     if (err) throw err;
     console.table(rows);
@@ -117,7 +116,7 @@ const showEmployees = () => {
   });
 };
 
-const addDepartent = () => {
+const addDepartment = () => {
   inquirer.prompt(
     {
       type: 'input',
@@ -126,10 +125,10 @@ const addDepartent = () => {
     })
     .then(answer => {
       const sql = `INSERT INTO department (name)VALUES (?)`;
-      connection.query(sql, answer.addDepartment, (er, result) => {
+      connection.query(sql, answer.addDepartment, (err, result) => {
         if (err) throw err;
-        console.log('Added' + answer.addDepartment + 'to departments!');
-        showDepartments
+        console.log('Added ' + answer.addDepartment + ' to departments!');
+        showDepartments()
       });
     });
 };
@@ -154,23 +153,23 @@ const addRole = () => {
       connection.query(roleSql, (err, data) => {
         if (err) throw err;
 
-        const deparment = data.map(({ name, id }) => ({ name: name, value: id }));
+        const department = data.map(({ name, id }) => ({ name: name, value: id }));
 
         inquirer.prompt([
           {
             type: 'list',
             name: 'department',
             message: 'What department is this role in?',
-            choices: deparment
+            choices: department
           }
         ])
           .then(deptChoice => {
-            const dept = deptChoice.dept;
+            const dept = deptChoice.department;
             params.push(dept);
-            const sql = `INSERT INTO role (title, salary, department_id) VALUES (?,?,?)`;
+            const sql = `INSERT INTO roles (title, salary, department_id) VALUES (?,?,?)`;
             connection.query(sql, params, (err, result) => {
               if (err) throw err;
-              console.log('Added' + answer.role + 'to roles!');
+              console.log('Added ' +answer.role+ ' to roles!');
               showRoles();
             });
           });
@@ -184,14 +183,11 @@ const addEmployee = () => {
       name: 'addEmployee',
       message: 'What employee do you want to add?',
     })
-    .then((answer) => {
-      connection.query(`INSERT INTO employee VALUE ?`,
-        {
-          employee_name: answer.addEmployee,
-        },
-        (err) => {
-          if (err) throw err;
-          console.log('Added employee successful!');
+    .then(answer  => {
+      const sql = `INSERT INTO employee (name)VALUES (?)`;
+      connection.query(sql, answer.addEmployee, (err, result) => {
+        if (err) throw err;
+        console.log('Added ' + answer.addEmployee + ' to employees!');
           showEmployee();
         }
       );
