@@ -1,13 +1,13 @@
 const path= require('path');
-const cTable = require ('console.table');
+const cTable = require ('cTable');
 const inquirer = require('require');
-const SQL = require('.Assets/main');
+const SQL = require('../Employee_Tracker/assets/main')
 const fs = require ('fs');
 
 const menu = (userChoice) => {
   return [{
 type: 'list',
-nmae: 'unserOptions',
+name: 'userOptions',
 message: 'Select an option',
 choices:[
   'View Employees',
@@ -49,11 +49,6 @@ const addEmployee = async(firstName = "", lastName = "") => {
     default: firstName,
   },{
     type: "input",
-    name: "nickName",
-    message: "Enter the nickname of the employee (can leave blank):",
-    default: nickName
-  },{
-    type: "input",
     name: "lastName",
     message: "Enter the last name of the employee:",
     default: lastName,
@@ -73,7 +68,6 @@ const chooseExistingEmployee = async(employees) => {
     name: `${ employee.first_name } ${ employee.last_name } (${ employee.title })`,
     id: employee.id,
     firstName: employee.first_name,
-    nickName: employee.nickname,
     lastName: employee.last_name,
     roleId: employee.role_id,
     managerId: employee.manager_id
@@ -385,15 +379,6 @@ const adminMenu = async(sqlObj) => {
     } catch(err) {
       console.log(err)
     }
-  }
-}
-
-// function to load the welcome.txt file
-const welcome = () => {
-  try {
-    return fs.readFileSync("./Assets/welcome.txt", "utf8");
-  } catch(err) {
-    console.log(err);
   }
 }
 
