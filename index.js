@@ -245,7 +245,7 @@ const addEmployee = () => {
       .then ((input) => {
         const index = employee.indexOf(input.manager);
         const manager_id = employees[index].getID();
-        const sql = `INSERT INTO employee` (role_id, first_name, last_name, manager_id) VALUES ('${role_id}', '${firstName}', '${lastName}','${manager_id}');`;
+        const sql = `INSERT INTO employee (role_id, first_name, last_name, manager_id) VALUES ('${role_id}', '${firstName}', '${lastName}','${manager_id}');`;
         if (index === employee.length - 1) {
           sql =`INSERT INTO employee (role_id, first_name, last_name) VALUES ('${role_id}', '${firstName}', '${lastName}');`; 
         }
