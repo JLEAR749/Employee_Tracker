@@ -343,7 +343,7 @@ const updateEmpManager = () => {
       const emp_id = employees[index].getID();
       const sql = `UPDATE employee SET manager_id=${emp_id};`;
       con.query(sql, (err, row)=>{
-        if (err) thorw err;
+        if (err) throw err;
         employees[indexEMP].setRoleId(emp_id);
         start();
       });
