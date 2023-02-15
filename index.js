@@ -1,5 +1,5 @@
 const path = require('path');
-const inquirer = require('require');
+const inquirer = require('inquirer');
 const cTable = require ('console.table');
 const SQL = require('../Employee_Tracker/assets/main')
 const fs = require ('fs');
