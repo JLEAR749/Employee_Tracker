@@ -399,7 +399,8 @@ const addRole = () => {
 };
 const addEmployee = () => {
   const role = [];
-  const (rol of roles) {
+  console.log(role);
+  for (rol of roles) {
     role.push(rol.getTitle());
   }
   const employee = [];
