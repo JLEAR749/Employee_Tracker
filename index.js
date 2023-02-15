@@ -5,9 +5,9 @@ const Connection = require('./db/connection')
 const util = require('util');
 const fs = require('fs');
 
-const departments = require('');
-const role = require('')
-const employees = require('')
+// const departments = require('');
+// const role = require('')
+// const employees = require('')
 
 const departments = [];
 const roles = [];
@@ -219,8 +219,8 @@ const addEmployee = () => {
   for (rol of roles) {
     role.push(rol.getTitle());
   }
-  const employe=[];
-  for (emp of employes) {
+  const employee=[];
+  for (emp of employees) {
     employee.push(emp.getFirstName() + '' + emp.getLastName());
   }
   inquirer.prompt(employeeQuestions).then((answer)=>{
