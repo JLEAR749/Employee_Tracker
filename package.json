@@ -19,7 +19,11 @@
   },
   "homepage": "https://github.com/JLEAR749/Employee_Tracker#readme",
   "dependencies": {
-    "inquirer": "^8.2.4",
-    "mysql2": "^3.0.1"
+    "console.table": "^0.10.0",
+    "fs": "^0.0.1-security",
+    "inquirer": "^8.2.5",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.0.1",
+    "path": "^0.12.7"
   }
 }

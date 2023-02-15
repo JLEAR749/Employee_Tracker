@@ -1,6 +1,6 @@
-const path= require('path');
-const cTable = require ('cTable');
+const path = require('path');
 const inquirer = require('require');
+const cTable = require ('console.table');
 const SQL = require('../Employee_Tracker/assets/main')
 const fs = require ('fs');
 
@@ -19,7 +19,7 @@ choices:[
   'Update Employee Name',
   'Update Employee Role',
   'Update Admin Info',
-  'Exit',
+  'Exit\n',
 ],
 default: userChoice
 }];
