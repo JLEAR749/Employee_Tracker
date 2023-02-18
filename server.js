@@ -201,9 +201,10 @@ var employee_tracker = function () {
             });
         } else if (answers.prompt === 'Update An Employee Role') {
             // Calling the database to acquire the roles and managers
+           
             db.query(`SELECT * FROM role`, (err, result) => {
                 if (err) throw err;
-
+                
                 inquirer.prompt([
                     {
                         // Choose an Employee to Update
@@ -213,8 +214,9 @@ var employee_tracker = function () {
                         choices: () => {
                             var array = [];
                             for (var i = 0; i < result.length; i++) {
-                                array.push(result[i].last_name);
+                                array.push(result[i].title);
                             }
+
                             var employeeArray = [...new Set(array)];
                             return employeeArray;
                         }
