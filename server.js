@@ -115,7 +115,7 @@ var employee_tracker = function () {
                         }
                     }
 
-                    db.query(`INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`, [answers.role, answers.salary, department.id], (err, result) => {
+                    db.query(`INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`, [answers.role, parseInt(answers.salary), department.id], (err, result) => {
                         if (err) throw err;
                         console.log(`Added ${answers.role} to the database.`)
                         employee_tracker();
@@ -201,7 +201,7 @@ var employee_tracker = function () {
             });
         } else if (answers.prompt === 'Update An Employee Role') {
             // Calling the database to acquire the roles and managers
-            db.query(`SELECT * FROM employee, role`, (err, result) => {
+            db.query(`SELECT * FROM role`, (err, result) => {
                 if (err) throw err;
 
                 inquirer.prompt([

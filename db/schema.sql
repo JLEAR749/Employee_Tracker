@@ -1,3 +1,4 @@
+USE employee_trackerdb;
 CREATE TABLE department (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30)
@@ -19,9 +20,11 @@ CREATE TABLE employee (
     role_id INTEGER,
     manager_id INTEGER,
     FOREIGN KEY (role_id)
-    REFERENCES roles(id),
+    REFERENCES role(id),
     FOREIGN KEY (manager_id)
     REFERENCES employee(id)
 );
+
+
 
 

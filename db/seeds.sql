@@ -1,3 +1,8 @@
+-- DROP DATABASE IF EXISTS employee_trackerdb;
+-- CREATE DATABASE employee_trackerdb;
+USE employee_trackerdb;
+
+
 INSERT INTO department(name)
 VALUES 
         ("Sales"), 
@@ -5,7 +10,7 @@ VALUES
         ("Marketing"), 
         ("Engineering");
 
-INSERT INTO ROLES (title, salary, department_id)
+INSERT INTO role (title, salary, department_id)
 VALUES  ("Sales Manager", 60000,1),
         ("Sales Person", 45000,1),
         ("Head Engineer", 85000,2),
