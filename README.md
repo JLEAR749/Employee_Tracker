@@ -6,8 +6,8 @@
  ## Table Of Contents
   - [Description](#description)
   - [Installation](#installation)
-  - [User Story](#User Story)
-  - [Acceptance Criteria](#Acceptance Criteria)
+  - [User Story](#userStory)
+  - [Acceptance Criteria](#acceptanceCriteria)
   - [License](#license)
   - [Questions](#questions)
   - [Credits](#credits)
