@@ -20,7 +20,7 @@ Developers frequently have to create interfaces that allow non-developers to eas
 Before moving forward with the project.  Please ensure you have these programs installed on yoru computer.  
 
 NPM I
-
+MYSQL2
 
 ## User Story
 
